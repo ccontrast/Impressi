@@ -8,7 +8,7 @@ class DecksController < ApplicationController
   def create
     @deck = current_user.decks.new(params[:deck])
     if @deck.save
-      flash[:succes] = "hey it worked"
+      flash[:success] = "hey it worked"
       redirect_to @deck
     else
       render 'new'
