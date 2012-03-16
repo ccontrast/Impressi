@@ -1,7 +1,9 @@
 Impressi::Application.routes.draw do
-  
 
-    resources :decks
+
+  get "pages/home"
+
+  resources :decks
 
   
   devise_for :users

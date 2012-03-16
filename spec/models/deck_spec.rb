@@ -21,22 +21,7 @@ describe Deck do
     end
   end
   
-  describe "#html" do
-    
-    before do 
-      @d = Deck.new 
-      @d.deck_data = [Step.new]
-      @d.deck_data[0].content = "Hello World"
-      @d.save
-    end
-    
-    # it "has the content in the <div> for each step" do
-    #       @d_html = @d.html
-    #       @d_html.should have_selector(:div, text: "Hello World")
-    #     end
-    
-    it "has the boilerplate markup"
-    
-  end
+  "user managing decks"
+  "home page with option of templates"
   
 end

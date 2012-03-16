@@ -22,8 +22,32 @@ class Deck < ActiveRecord::Base
   #   output << "</div>\n"
   #   
   #   output
-  # end
+  # # end
   
+  
+  # def html
+  #   
+  #   output = ""
+  #   
+  #   deck_data.each do |step|
+  #     
+  #     output << "<div class='step" << (step.border ? " slide' " : "' ")
+  #     
+  #     output << "data-x='#{step.position_x}' "      if step.position_x.to_i != 0
+  #     output << "data-y='#{step.position_y}' "      if step.position_y.to_i != 0
+  #     output << "data-z='#{step.position_z}' "      if step.position_z.to_i != 0
+  #     output << "scale='#{step.scale}' "            if step.scale.to_i != 1
+  #     output << "data-rotate-x='#{step.rotate_x}' " if step.rotate_x.to_i != 0
+  #     output << "data-rotate-y='#{step.rotate_y}' " if step.rotate_y.to_i != 0
+  #     output << "data-rotate-z='#{step.rotate_z}' " if step.rotate_z.to_i != 0
+  #     output << ">\n"
+  #     output << " #{step.content}\n"
+  #     output << "</div>\n"
+  #   end
+  #   
+  #   output
+  #   
+  # end
   
   def content?
     return false unless deck_data.kind_of?(Array)
