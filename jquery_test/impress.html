@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Impress Tutorial</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+				<link href="impress-demo.css" rel="stylesheet">
+    </head>
+    <body>
+		<input id="my_input" type="text" style="display: none;position: absolute; top: 15px; left: 15px">
+	
+			<div id="impress">
+				<div class="step" data-x="0" data-y="0">
+					<div class="editable">My first slide</div>
+				</div>
+				
+				<div class="step" data-x="1000" data-y="-1000">
+				    <div class="editable">This is slide 2</div>
+				</div>
+				
+				<div class="step" data-x="1000" data-y="0">
+				    <div class="editable">This is slide 3</div>
+				</div>
+				
+				<div class="step" data-x="2000" data-y="-2000" data-rotate-y="45" data-rotate-x="279" data-rotate-z="90" data-scale="1">
+						<div class="big bold">
+							<div class="editable"><div id="respond-text1">Big Message 1</div></div>
+						</div>
+					</div>
+				
+				<div class="step" data-x="3000" data-y="-3000" data-scale="1">
+						<div class="big bold">
+							<div class="editable">
+							<div id="respond-text1">Additional line</div>
+							<div id="respond-text2">Big Message 2</div>
+							</div>
+						</div>
+					</div>
+				
+				<div class="step" data-x="5000" data-y="-5000" data-rotate-y="90" data-rotate-x="90" data-scale="2">
+							
+							<div class="big bold">
+								<div class="editable">
+								<div id="respond-text1">Responsive websites</div>
+								<div id="respond-text2">respond</div>
+								<div id="respond-text3">to their environment</div>
+								</div>
+							</div>
+						</div>
+				
+
+			</div>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript">
+		var current_slide = null;
+		var mode = 'prezi';
+		
+			console.log("we are ready");
+			
+			document.addEventListener("keydown", function ( event ) {
+					console.log("keydown from our code");
+					console.log("mode = " + mode)
+					if (mode ==  "edit"){
+						event.stopImmediatePropagation();
+					}
+				});
+
+				document.addEventListener("keyup", function ( event ) {
+						console.log("keydown from our code");
+						console.log("mode = " + mode)
+						if (mode ==  "edit"){
+							event.stopImmediatePropagation();
+						}
+				});
+		  
+		
+		$(function() {
+			
+		  
+			// $("#my_input").hide();
+			$("input#my_input").keyup(function() {
+				current_slide.text($(this).val());
+			});
+			
+			
+			$(".editable").click(function() {
+				var input = $("#my_input");
+				mode = 'edit';
+				current_slide = $(this);
+				input.val($(this).text());
+				input.fadeIn();
+				input.focus();
+				return false;
+			});
+			
+			$("#my_input").focusout(function() {
+				mode = 'prezi';
+			})
+		});
+		</script>
+		<script type="text/javascript" src="impress.js"></script>
+		<script type="text/javascript" src="jeditable.js"></script>
+    </body>
+</html>
