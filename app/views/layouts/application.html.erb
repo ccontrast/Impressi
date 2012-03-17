@@ -7,13 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	
+
+<h1>Impressi: Impressing you while impressing others</h1>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
+<% if signed_in? %>
 <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+<% end %>
 
 <%= yield %>
+
+<%= debug params %>
+<%= debug current_user %>
 
 </body>
 </html>
