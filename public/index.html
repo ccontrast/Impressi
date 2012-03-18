@@ -1,241 +1,112 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <title>Ruby on Rails: Welcome aboard</title>
-    <style type="text/css" media="screen">
-      body {
-        margin: 0;
-        margin-bottom: 25px;
-        padding: 0;
-        background-color: #f0f0f0;
-        font-family: "Lucida Grande", "Bitstream Vera Sans", "Verdana";
-        font-size: 13px;
-        color: #333;
-      }
-
-      h1 {
-        font-size: 28px;
-        color: #000;
-      }
-
-      a  {color: #03c}
-      a:hover {
-        background-color: #03c;
-        color: white;
-        text-decoration: none;
-      }
-
-
-      #page {
-        background-color: #f0f0f0;
-        width: 750px;
-        margin: 0;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      #content {
-        float: left;
-        background-color: white;
-        border: 3px solid #aaa;
-        border-top: none;
-        padding: 25px;
-        width: 500px;
-      }
-
-      #sidebar {
-        float: right;
-        width: 175px;
-      }
-
-      #footer {
-        clear: both;
-      }
-
-      #header, #about, #getting-started {
-        padding-left: 75px;
-        padding-right: 30px;
-      }
-
-
-      #header {
-        background-image: url("assets/rails.png");
-        background-repeat: no-repeat;
-        background-position: top left;
-        height: 64px;
-      }
-      #header h1, #header h2 {margin: 0}
-      #header h2 {
-        color: #888;
-        font-weight: normal;
-        font-size: 16px;
-      }
-
-
-      #about h3 {
-        margin: 0;
-        margin-bottom: 10px;
-        font-size: 14px;
-      }
-
-      #about-content {
-        background-color: #ffd;
-        border: 1px solid #fc0;
-        margin-left: -55px;
-        margin-right: -10px;
-      }
-      #about-content table {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        font-size: 11px;
-        border-collapse: collapse;
-      }
-      #about-content td {
-        padding: 10px;
-        padding-top: 3px;
-        padding-bottom: 3px;
-      }
-      #about-content td.name  {color: #555}
-      #about-content td.value {color: #000}
-
-      #about-content ul {
-        padding: 0;
-        list-style-type: none;
-      }
-
-      #about-content.failure {
-        background-color: #fcc;
-        border: 1px solid #f00;
-      }
-      #about-content.failure p {
-        margin: 0;
-        padding: 10px;
-      }
-
-
-      #getting-started {
-        border-top: 1px solid #ccc;
-        margin-top: 25px;
-        padding-top: 15px;
-      }
-      #getting-started h1 {
-        margin: 0;
-        font-size: 20px;
-      }
-      #getting-started h2 {
-        margin: 0;
-        font-size: 14px;
-        font-weight: normal;
-        color: #333;
-        margin-bottom: 25px;
-      }
-      #getting-started ol {
-        margin-left: 0;
-        padding-left: 0;
-      }
-      #getting-started li {
-        font-size: 18px;
-        color: #888;
-        margin-bottom: 25px;
-      }
-      #getting-started li h2 {
-        margin: 0;
-        font-weight: normal;
-        font-size: 18px;
-        color: #333;
-      }
-      #getting-started li p {
-        color: #555;
-        font-size: 13px;
-      }
-
-
-      #sidebar ul {
-        margin-left: 0;
-        padding-left: 0;
-      }
-      #sidebar ul h3 {
-        margin-top: 25px;
-        font-size: 16px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #ccc;
-      }
-      #sidebar li {
-        list-style-type: none;
-      }
-      #sidebar ul.links li {
-        margin-bottom: 5px;
-      }
-
-      .filename {
-        font-style: italic;
-      }
-    </style>
-    <script type="text/javascript">
-      function about() {
-        info = document.getElementById('about-content');
-        if (window.XMLHttpRequest)
-          { xhr = new XMLHttpRequest(); }
-        else
-          { xhr = new ActiveXObject("Microsoft.XMLHTTP"); }
-        xhr.open("GET","rails/info/properties",false);
-        xhr.send("");
-        info.innerHTML = xhr.responseText;
-        info.style.display = 'block'
-      }
-    </script>
-  </head>
-  <body>
-    <div id="page">
-      <div id="sidebar">
-        <ul id="sidebar-items">
-          <li>
-            <h3>Browse the documentation</h3>
-            <ul class="links">
-              <li><a href="http://guides.rubyonrails.org/">Rails Guides</a></li>
-              <li><a href="http://api.rubyonrails.org/">Rails API</a></li>
-              <li><a href="http://www.ruby-doc.org/core/">Ruby core</a></li>
-              <li><a href="http://www.ruby-doc.org/stdlib/">Ruby standard library</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-
-      <div id="content">
-        <div id="header">
-          <h1>Welcome aboard</h1>
-          <h2>You&rsquo;re riding Ruby on Rails!</h2>
-        </div>
-
-        <div id="about">
-          <h3><a href="rails/info/properties" onclick="about(); return false">About your application&rsquo;s environment</a></h3>
-          <div id="about-content" style="display: none"></div>
-        </div>
-
-        <div id="getting-started">
-          <h1>Getting started</h1>
-          <h2>Here&rsquo;s how to get rolling:</h2>
-
-          <ol>
-            <li>
-              <h2>Use <code>rails generate</code> to create your models and controllers</h2>
-              <p>To see all available options, run it without parameters.</p>
-            </li>
-
-            <li>
-              <h2>Set up a default route and remove <span class="filename">public/index.html</span></h2>
-              <p>Routes are set up in <span class="filename">config/routes.rb</span>.</p>
-            </li>
-
-            <li>
-              <h2>Create your database</h2>
-              <p>Run <code>rake db:create</code> to create your database. If you're not using SQLite (the default), edit <span class="filename">config/database.yml</span> with your username and password.</p>
-            </li>
-          </ol>
-        </div>
-      </div>
-
-      <div id="footer">&nbsp;</div>
-    </div>
-  </body>
+    <head>
+        <title>Impress Tutorial</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel='stylesheet' href='impress.css' />
+		<link rel='stylesheet' href='boxes.css' />
+		<link rel='stylesheet' href='custom.css' />
+    	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script> 
+		<script src='boxes.js'></script>
+		
+		
+	
+		<script>
+				//test object
+				var domObject = {
+					nodeClass: 'slide',
+					dataX: '4000'
+				};
+				
+				// dynamically generate slide image elements with anchor wrappers to jump easily between slides
+				var populateSlideViewer = function(id) {
+					var a = $('<a href="#step-' + (id + 1) + '" class="viewer-anchor" />'),
+						li = $('<li class="step-view" />'),
+						img = $("<img />").attr('src', 'silas.jpeg')
+										  .attr('id', 'slide-no-' + id)
+										  .attr('width', '128')
+										  .attr('height', '94');
+					a.html(li);
+					li.html(img);
+					return a;
+				};
+				
+			
+				
+				window.onload = function() {
+					// $('div ul#slide-list').on({
+					// 						mouseenter: function() {
+					// 							$(this).attr('width', '100')
+					// 						},
+					// 						mouseout: function() {
+					// 							$(this).attr('width', '75');
+					// 						
+					// 					  }}, 'img'
+					// 					);
+					
+					// find number of slides, then generate images for each
+					var numSlidesInDeck =  $('div.step').length;
+					for(var i = 0; i < numSlidesInDeck;i++ ) {
+						console.log($('div.step').get(i).innerHTML);
+						$('#slide-list').append(populateSlideViewer(i));
+					}
+			
+					$('div ul#slide-list').movingBoxes({
+						speed: 100,
+						wrap: true,
+						startPanel: 1,
+						reducedSize: 0.8
+					});
+				};
+		</script>
+	</head>
+    <body>
+		<div id='container'>
+			
+			<div id='slide-interface'>
+				<ul id='slide-list' style='z-index=100'>
+				
+				</ul>
+			</div>
+			
+		<div id="impress">
+			<div class="step slide" data-x="0" data-y="0">
+			    My first slide
+			</div>
+			
+			<div class="step slide" data-x="1600" data-y="0">
+			    This is slide 2
+			</div>
+			
+			<div class="step" data-x="500" data-y="-1000">
+			    This is slide 3
+			</div>
+			
+			<div class="step" data-x="500" data-y="-800" data-rotate = "90">
+			    This is slide 4
+			</div>
+			
+			<div class="step" data-x="500" data-y="-800" data-rotate-z = "90">
+			    This is slide 5 -- does it have the same setting?
+			</div>
+			
+			<div class="step" data-x="0" data-y="-800" data-rotate-x="90" data-rotate-y="0" data-scale="0.1">
+			    This is slide 6 and it rotates in.
+			</div>
+			
+			 <div class="step" data-x="0" data-y="-800" data-rotate-y="90" data-rotate-z="0" data-scale="0.1">
+			    This is slide 7 and it rotates in.
+			</div>
+			
+			<div class="step slide" data-x="-1000" data-y="800" data-z='100'>
+				My first slide 8 
+			</div>
+		</div>
+		 
+		</div>
+		<script src='impress.js'></script>
+		 </body>
 </html>
+
+
+

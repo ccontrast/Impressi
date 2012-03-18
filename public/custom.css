@@ -1,0 +1,21 @@
+	#slide-interface {
+		margin-left:auto;
+		margin-right:auto;
+		z-index:100;
+		padding-bottom:40px;
+		pointer-events: auto;
+		width:400px;
+	}
+	
+	#container {
+		width:1000px;
+		height:100%;
+		margin:0 auto;
+		position:relative;
+	}
+	
+	.step-view{
+		margin-bottom:40px;
+	}
+
+	.mb-inside img { width: 100%; }
