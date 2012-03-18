@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120314230959) do
+ActiveRecord::Schema.define(:version => 20120316234320) do
 
   create_table "decks", :force => true do |t|
     t.string   "name"
@@ -19,22 +19,8 @@ ActiveRecord::Schema.define(:version => 20120314230959) do
     t.text     "html_source"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-  end
-
-  create_table "steps", :force => true do |t|
-    t.boolean  "border"
-    t.integer  "x_position"
-    t.integer  "y_position"
-    t.integer  "z_position"
-    t.integer  "scale"
-    t.integer  "rotate_x"
-    t.integer  "rotate_y"
-    t.integer  "rotate_z"
-    t.integer  "deck_id"
-    t.integer  "order_in_deck"
-    t.text     "content"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.string   "deck_data"
+    t.boolean  "template"
   end
 
   create_table "users", :force => true do |t|
