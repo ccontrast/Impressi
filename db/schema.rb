@@ -11,16 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120316234320) do
+ActiveRecord::Schema.define(:version => 20120319213536) do
 
   create_table "decks", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
-    t.text     "html_source"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.string   "deck_data"
-    t.boolean  "template"
+    t.boolean  "template",   :default => false
   end
 
   create_table "users", :force => true do |t|

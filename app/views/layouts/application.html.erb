@@ -8,7 +8,6 @@
 </head>
 <body>
 
-<h1>Impressi: Impressing you while impressing others</h1>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
@@ -18,8 +17,7 @@
 
 <%= yield %>
 
-<%= debug params %>
-<%= debug current_user %>
 <%= javascript_include_tag "impress.js" %>
+<script>impress();</script>
 </body>
 </html>
