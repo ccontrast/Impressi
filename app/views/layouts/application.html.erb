@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Impressi</title>
+  <title>Impressi - HTML5 </title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<p class="notice"><%= notice %></p>
+	<p class="alert"><%= alert %></p>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+	<% if signed_in? %>
+		<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+	<% end %>
 
-<% if signed_in? %>
-<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-<% end %>
+	<%= yield %>
 
-<%= yield %>
 
-<%= javascript_include_tag "impress.js" %>
-<script>impress();</script>
+	<%= javascript_include_tag "impress.js" %>
+	<%= javascript_include_tag "jeditable.js" %>
+	<%= javascript_include_tag "sideSlideBar.js" %>
+	
+
 </body>
 </html>
