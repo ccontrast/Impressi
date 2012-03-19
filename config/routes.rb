@@ -8,10 +8,7 @@ Impressi::Application.routes.draw do
 
   match "/users/:id" => 'users#show'
   
-
-
-   
-
+  match '/jquery_test/' => 'pages#impress'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

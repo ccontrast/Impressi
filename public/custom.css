@@ -29,7 +29,7 @@
 	  background-image: linear-gradient(top, #364147, #0a0c0d);
 		height:100%;	
 		width:250px;
-		border-right:6px solid #556270;
+		border-right:6px solid #5FCE6D;
 		border-bottom-left-radius:6px;
 		-webkit-box-shadow:-3px 1px 8px 7px #777;
 		margin-right:50px;
@@ -79,5 +79,39 @@
 
 	.custom-step:not(.custom-active) {
 	 	opacity: 0.3;
+	}
+	
+	.button {
+		background: #00A6FC;
+		text-align: center;
+		color: white;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 1em;
+		line-height: 1;
+		font-family: "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif;
+		position: relative;
+		cursor: pointer;
+		border: none;
+		outline: none;
+		margin: 0;
+		padding:10px;
+	}
+	
+	#slideDeckButtons {
+		list-style:none;
+		display:inline;
+		margin-left:10px;
+	}
+	
+	#slideDeckButtons li {
+		float:left;
+		margin-left:20px;
+	}
+	
+	#impress {
+		margin-top:10px;
+		margin-left:20px;
+		margin-top:20px;
 	}
 	
