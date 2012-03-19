@@ -3,6 +3,12 @@ class Deck < ActiveRecord::Base
   serialize :deck_data
   before_save :content?
   
+  attr_accessible :name, :template
+  
+  validates :name, presence: true,
+                   uniqueness: true
+  
+  
     # for each step, create div tag with attributes of step object
     # => close div attributes tag
     # => fill text with content data for that step
