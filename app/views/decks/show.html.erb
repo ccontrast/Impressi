@@ -1,9 +1,10 @@
-<h1>Decks#show</h1>
-<p>Find me in app/views/decks/show.html.erb</p>
+<%= render :partial => "shared/side_bar" %>
 
-<%#= debug(@deck) %>
-<div id='impress'>
-	<% @deck.deck_data.each do |step| %>
-		<%= render :partial => 'step', :locals => {:step => step} %>
-	<% end %>
+<div id='container-custom'>
+	<textarea id="my_input" rows='3' cols='60'  class='six columns omega'></textarea>
+	<div id='impress' style='z-index:-1;'>
+		<% @deck.deck_data.each_with_index do |step, index| %>
+			<%= render :partial => 'step', :locals => {:step => step, :index => index} %>
+		<% end %>
+	</div>
 </div>

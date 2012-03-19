@@ -21,6 +21,7 @@ class DecksController < ApplicationController
   end
 
   def show
-    @deck = Deck.find 16
+    @deck = Deck.first
+    # redirect_to 'decks/show/#/step-1'
   end
 end

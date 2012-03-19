@@ -13,7 +13,7 @@
 	
 	var createStepClone = function(step) {
 		var cloned    = $(step).clone(),
-		 		width     = ($(step).css('width').match(/[0-9]+/)) / 5,
+		 	  width     = ($(step).css('width').match(/[0-9]+/)) / 5,
 			  height    = ($(step).css('height').match(/[0-9]+/)) / 5,
 			  fontSize  = ($(step).css('font-size').match(/[0-9]+/)) / 5;
 
@@ -52,19 +52,23 @@
 		
 		// find number of slides and dynamically add div thumbnails to the page
 		var numSlidesInDeck =  $('div.step').length;
+	
 		for(var i = 0; i < numSlidesInDeck;i++ ) {
 			var step = $("div#step-"+(i+1)).get(0);
+		
 			var clonedStep = createStepClone(step)
+
 			$('#slide-list').append(populateSlideViewer(i, clonedStep));
 		}
 
 		impressSlider = $('div ul#slide-list').bxSlider({
-			mode:            'vertical',
-			displaySlideQty: 5,
-			moveSlideQty:    5,
-			speed:           200,
-			controls:        false
+			mode :            'vertical',
+			displaySlideQty : 4,
+			moveSlideQty :    1,
+			speed :           100,
+			infiniteLoop :    true,
+			controls :        false
 		});
-		
+		impress();
 		//impressSlider.reloadShow();
 	};
