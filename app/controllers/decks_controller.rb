@@ -36,6 +36,7 @@ class DecksController < ApplicationController
   end
 
   def show
-    @deck = Deck.find_by_template(true)
+    @deck = Deck.first
+    # redirect_to 'decks/show/#/step-1'
   end
 end

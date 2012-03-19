@@ -17,16 +17,7 @@
 	    <link href="impress-demo.css" rel="stylesheet" />
 	
 			<style>
-				input.edit_field {
-					position: fixed;
-					bottom: 300px;
-					width: 600px;
-					left: 50%;
-					margin-left: -250px;
-					line-height: 1.2em;
-					font-size: 1.2em;
-					display: none;
-				}
+			
 			</style>
     
 	    <link rel="shortcut icon" href="favicon.png" />
@@ -142,9 +133,6 @@
 		  
 		
 			$(function() {
-			
-		  
-				// $("#my_input").hide();
 				$("input.edit_field").keyup(function(e) {
 					current_slide.text($(this).val());
 				});
@@ -179,7 +167,5 @@
 		</script>
 		
 		<script src="impress.js"></script>
-		<script>impress();</script>
-
 	</body>
 </html>
