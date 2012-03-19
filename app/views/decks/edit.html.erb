@@ -1,9 +1,17 @@
-<div id='impress'>
-	<% @deck.deck_data.each do |step| %>
-		<%= render :partial => 'step', :locals => {:step => step} %>
-	<% end %>
+<%= render :partial => "shared/side_bar" %>
+<div id='container-custom'>
+	<div id='impress' style='z-index:-1'>
+		<textarea id="my_input" rows='3' cols='60'  class='six columns omega' placeholder='Enter your awesome slide related awesomeness here'></textarea>
+		<% @deck.deck_data.each_with_index do |step, index| %>
+			<%= render :partial => 'step', :locals => {:step => step, :index => index} %>
+		<% end %>
+	</div>
 </div>
 
-<%= stylesheet_link_tag    "impress", :media => "all" %>
+<%= stylesheet_link_tag "impress", :media => "all" %>
+<%= stylesheet_link_tag "custom", :media => "all" %>
+
 <%= javascript_include_tag "impress.js" %>
-<script>impress();</script>
+<%= javascript_include_tag "jeditable.js" %>
+<%= javascript_include_tag "sideSlideBar.js" %>
+<%= javascript_include_tag "slideEdit.js" %>

@@ -36,7 +36,7 @@ $(function() {
 		});
 		mode = 'edit';
 		current_slide = $(this);
-		input.val($(this).text());
+		input.val($(this).val());
 		input.fadeIn();
 		input.focus();
 		input.select();
