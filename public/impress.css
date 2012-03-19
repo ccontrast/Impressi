@@ -91,7 +91,8 @@
 
 		.step {
 		    width: 900px;
-		    padding: 40px;
+			height:600px;
+		    padding: 40px 60px;
 
 		    -webkit-box-sizing: border-box;
 		    -moz-box-sizing: border-box;
