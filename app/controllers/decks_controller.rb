@@ -21,5 +21,6 @@ class DecksController < ApplicationController
   end
 
   def show
+    @deck = Deck.find 16
   end
 end

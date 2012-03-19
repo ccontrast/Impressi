@@ -1,2 +1,9 @@
 <h1>Decks#show</h1>
 <p>Find me in app/views/decks/show.html.erb</p>
+
+<%#= debug(@deck) %>
+<div id='impress'>
+	<% @deck.deck_data.each do |step| %>
+		<%= render :partial => 'step', :locals => {:step => step} %>
+	<% end %>
+</div>
