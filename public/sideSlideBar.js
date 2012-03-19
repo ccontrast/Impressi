@@ -13,9 +13,9 @@
 	
 	var createStepClone = function(step) {
 		var cloned    = $(step).clone(),
-		 		width     = ($(step).css('width').match(/[0-9]+/)) / 4,
-			  height    = ($(step).css('height').match(/[0-9]+/)) / 4,
-			  fontSize  = ($(step).css('font-size').match(/[0-9]+/)) / 4;
+		 		width     = ($(step).css('width').match(/[0-9]+/)) / 5,
+			  height    = ($(step).css('height').match(/[0-9]+/)) / 5,
+			  fontSize  = ($(step).css('font-size').match(/[0-9]+/)) / 5;
 
 		cloned.css({
 			'width':             width+"px",
@@ -61,8 +61,8 @@
 		impressSlider = $('div ul#slide-list').bxSlider({
 			mode:            'vertical',
 			displaySlideQty: 5,
-			moveSlideQty:    1,
-			speed:           100,
+			moveSlideQty:    5,
+			speed:           200,
 			controls:        false
 		});
 		
