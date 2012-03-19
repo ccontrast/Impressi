@@ -31,11 +31,12 @@
 				<!-- <button id='add-slide'>Add a slide</button> -->
 			</div>
 		
+		<input id="my_input" type="text" style="display: none;position: absolute; top: 15px; left: 15px">
 		
 		<div id='container-custom'>
 
 			<div id="impress" class='container eight columns offset-by-one' style='z-index:-1;'>
-				<div id='step-1' class="step slide" data-x="0" data-y="0">
+				<div id='step-1' class="step slide editable" data-x="0" data-y="0">
 				    My first slide
 				</div>
 			
@@ -69,7 +70,53 @@
 			</div>
 		 
 		</div>
+		<script type="text/javascript">
+		var current_slide = null;
+		var mode = 'prezi';
+		
+			console.log("we are ready");
+			
+			document.addEventListener("keydown", function ( event ) {
+					console.log("keydown from our code");
+					console.log("mode = " + mode)
+					if (mode ==  "edit"){
+						event.stopImmediatePropagation();
+					}
+				});
+
+				document.addEventListener("keyup", function ( event ) {
+						console.log("keydown from our code");
+						console.log("mode = " + mode)
+						if (mode ==  "edit"){
+							event.stopImmediatePropagation();
+						}
+				});
+		  
+		
+		$(function() {
+			// $("#my_input").hide();
+			$("input#my_input").keyup(function() {
+				current_slide.text($(this).val());
+			});
+			
+			$(".editable").click(function() {
+				var input = $("#my_input");
+				mode = 'edit';
+				current_slide = $(this);
+				input.val($(this).text());
+				input.fadeIn();
+				input.focus();
+				return false;
+			});
+			
+			$("#my_input").focusout(function() {
+				mode = 'prezi';
+			})
+		});
+		</script>
+		
 		<script src='impress.js'></script>
+		<script type="text/javascript" src="jeditable.js"></script>
 		</body>
 </html>
 
