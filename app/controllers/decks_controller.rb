@@ -13,15 +13,18 @@ class DecksController < ApplicationController
     @new_deck.name = params[:deck][:name]
     @new_deck.template = false
     
-    if @new_deck.save
-      render :edit
-    else
-      redirect new_deck_path
+    respond_to do |format|
+      if @new_deck.save
+        flash[:notice] = 'Deck successfully created.'
+        format.html { redirect_to(edit_deck_path(@new_deck.id)) }
+      else
+        format.html { redirect_to(new_deck_path) }
+      end
     end
   end
   
   def edit
-    
+    @deck = Deck.find(params[:id])
   end
 
   def update

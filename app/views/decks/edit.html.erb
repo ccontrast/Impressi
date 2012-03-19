@@ -1,8 +1,9 @@
-<h1>Decks#edit</h1>
-<p>Find me in app/views/decks/edit.html.erb</p>
+<div id='impress'>
+	<% @deck.deck_data.each do |step| %>
+		<%= render :partial => 'step', :locals => {:step => step} %>
+	<% end %>
+</div>
 
-<%= @new_deck.inspect %>
-hi
-
+<%= stylesheet_link_tag    "impress", :media => "all" %>
 <%= javascript_include_tag "impress.js" %>
 <script>impress();</script>
