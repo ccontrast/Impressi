@@ -14,5 +14,4 @@
 //= require jquery_ujs
 //= require bx_slide
 //= require sideSlideBar
-//= require autoregrow
-//= require slideEdit
+

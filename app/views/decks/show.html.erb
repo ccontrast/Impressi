@@ -1,9 +1,7 @@
 	<div id='impress' deck_id="<%= @deck.id %>" class='seven columns' style='z-index:-1'>
-
 		<% @deck.deck_data.each_with_index do |step, index| %>
 			<%= render :partial => 'step', :locals => {:step => step, :index => index} %>
 		<% end %>
-
 	</div>
 
 <%= javascript_include_tag "impress.js" %>

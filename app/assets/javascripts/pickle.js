@@ -19,21 +19,23 @@
 var pickle = function () {
 	// each div under <div id ="impress">
 	//   put the content into an array
-	
+
 	var user_input = [];
 	var number_of_steps = $('#impress .step').length;
 	
 	for(var i = 0; i < number_of_steps; i++) {
+			
+		//console.log($('#impress .step')[i].getAttributes());
 	    user_input.push($('#impress .step')[i].textContent);
 	}
 	
 	return user_input;
 };
 
-$('#impress-button').click(function() {
-
+var sendViaAjax = function () {
+	
 	var deck_id = $('#impress').attr('deck_id');
-    var contents = pickle();
+  var contents = pickle();
 		  
 	$.ajax({
 		 type: "PUT",
@@ -42,10 +44,18 @@ $('#impress-button').click(function() {
 	     },
 		 url:  "http://localhost:3000/decks/" + deck_id,
 		 success: function() {
-		     console.log("Data saved.");
+		 //alert('save');
+		 console.log("Data saved.");
+			console.log(contents);
 		 },
 		 failure: function() {
+
 			 console.log("Fail."); 
 		 }
 	});
-});
+};
+
+setInterval(sendViaAjax, 60000);
+
+$('#impress-button').click(sendViaAjax);
+
