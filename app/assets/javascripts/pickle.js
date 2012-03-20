@@ -1,3 +1,19 @@
+(function($) {
+    $.fn.getAttributes = function() {
+        var attributes = {}; 
+
+        if(!this.length)
+            return this;
+
+        $.each(this[0].attributes, function(index, attr) {
+            attributes[attr.name] = attr.value;
+        }); 
+
+        return attributes;
+    }
+})(jQuery);
+
+
 // For the purpose of serializing deck_data before sending it over the wire
 
 var pickle = function () {
@@ -35,4 +51,3 @@ $('#impress-button').click(function() {
 		 }
 	});
 });
-	

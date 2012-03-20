@@ -13,13 +13,11 @@ class DecksController < ApplicationController
     @new_deck.name = params[:deck][:name]
     @new_deck.template = false
     
-    respond_to do |format|
-      if @new_deck.save
-        flash[:notice] = 'Deck successfully created.'
-        format.html { redirect_to(edit_deck_path(@new_deck.id)) }
-      else
-        format.html { redirect_to(new_deck_path) }
-      end
+    if @new_deck.save
+      flash[:notice] = 'Deck successfully created.'
+      redirect_to(edit_deck_path(@new_deck.id))
+    else
+      redirect_to(new_deck_path)
     end
   end
   
@@ -36,7 +34,7 @@ class DecksController < ApplicationController
     if deck.save
       render :nothing => true
     else
-      redirect_to(edit_deck_path(deck.id))
+      render :text => 'Failed Ajax call.'
     end
   end
 
