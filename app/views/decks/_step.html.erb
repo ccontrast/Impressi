@@ -1,4 +1,9 @@
-<% attributes = ['data-x', 'data-y', 'data-z', 'data-rotate-x', 'data-rotate-y', 'data-rotate-z', 'data-scale'] %>
-
-<div id="step-<%= (index + 1) %>" class="<%= step['class']%> editable"<% attributes.each do |attribute| %><% if step[attribute] %> <%= "#{attribute}=#{step[attribute]}" %><% end %><% end %>><p><%= step['content'] %></p></div>
+<div id="step-<%= (index + 1) %>" class="<%= step["class"]%> editable"
+	<% step.each do |attribute, value| %>
+		<% if !["class","content"].include(attribute) %>
+			<%= "#{attribute}='#{value}'" %>
+		<% end %>
+	<% end %>>
+	<p><%= step["content"] %></p>
+</div>
 
