@@ -18,4 +18,4 @@ require 'open-uri'
   end
 # end
 
-puts html_to_deck "http://bartaz.github.com/impress.js# "
+puts html_to_deck "http://packages.python.org/sphinxjp.themes.impressjs/"

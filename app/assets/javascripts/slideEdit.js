@@ -17,15 +17,18 @@ document.addEventListener("keyup", function ( event ) {
 $(function() {	
 	var activeInput = false;
 	
-	$(".editable").click(function(e) {
+	$.click(function(e) {
 		e.stopImmediatePropagation();
-
+		
+		console.log("my id:" + $(this).attr('id'))
 		var input = $("#my_input");
 				input.val($(this).val());
 		
 		if(!$(this).hasClass('active')) {
 			return false;
 		}
+		
+		
 		
 		mode = 'edit';
 		current_slide = $(this);

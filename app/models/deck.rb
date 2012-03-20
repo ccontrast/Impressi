@@ -59,7 +59,7 @@ class Deck < ActiveRecord::Base
     return false unless deck_data.kind_of?(Array)
     return false if deck_data.empty?
     message = true
-    deck_data.each { |step| return message = false unless step[:content] }
+    deck_data.each { |step| return message = false unless step['content'] }
     message
   end
 end

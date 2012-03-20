@@ -34,8 +34,6 @@ $('#impress-button').click(function() {
 
 	var deck_id = $('#impress').attr('deck_id');
     var contents = pickle();
-	
-	alert(deck_id + " " + contents);
 		  
 	$.ajax({
 		 type: "PUT",

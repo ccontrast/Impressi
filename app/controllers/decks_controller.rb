@@ -29,7 +29,7 @@ class DecksController < ApplicationController
     deck = Deck.find(params[:id])
     new_content = params[:content]
     deck.deck_data.each_with_index do |step, i|
-      step[:content] = new_content[i] + 'test'
+      step[:content] = new_content[i]
     end
     if deck.save
       render :nothing => true

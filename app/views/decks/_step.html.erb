@@ -1,4 +1,4 @@
-<% attributes = {:data_x => 'data-x', :data_y => 'data-y', :data_z => 'data-z', :data_rotate_x => 'data-rotate-x', :data_rotate_y => 'data-rotate-y', :data_rotate_z => 'data-rotate-z', :data_scale => 'data-scale'} %>
+<% attributes = ['data-x', 'data-y', 'data-z', 'data-rotate-x', 'data-rotate-y', 'data-rotate-z', 'data-scale'] %>
 
-<div id="step-<%= (index + 1) %>" class="<%= step[:class]%> editable"<% attributes.each do |attribute, name| %><% if step[attribute] %> <%= "#{name}=#{step[attribute]}" %><% end %><% end %>><p><%= step[:content] %></p></div>
+<div id="step-<%= (index + 1) %>" class="<%= step['class']%> editable"<% attributes.each do |attribute| %><% if step[attribute] %> <%= "#{attribute}=#{step[attribute]}" %><% end %><% end %>><p><%= step['content'] %></p></div>
 
