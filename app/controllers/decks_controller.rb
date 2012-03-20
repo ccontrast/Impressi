@@ -1,5 +1,5 @@
 class DecksController < ApplicationController
-  #before_filter :authenticate_user!
+ # before_filter :authenticate_user!, :only => [:]
   
   def new
     @templates = Deck.find_all_by_template(true)
@@ -35,7 +35,7 @@ class DecksController < ApplicationController
     deck = Deck.find(params[:id])
     new_content = params[:content]
     deck.deck_data.each_with_index do |step, i|
-      step[:content] = new_content[i]
+      step['content'] = new_content[i]
     end
     if deck.save
       render :nothing => true
