@@ -1,7 +1,9 @@
 class DecksController < ApplicationController
- # before_filter :authenticate_user!, :only => [:]
+  layout "deck", :except => :new
   
-  def new
+  before_filter :authenticate_user!, :only => [:edit, :update]
+  
+  def new    
     @templates = Deck.find_all_by_template(true)
     @template_names = @templates.map { |template| template.name }
     @deck = Deck.new
