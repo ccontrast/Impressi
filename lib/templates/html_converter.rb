@@ -14,9 +14,8 @@ require 'open-uri'
       out_hash["content"] = f.text.gsub(/\s+/, " ").strip
       output << out_hash
     end
-    p output
-    # puts output
+    output
   end
 # end
 
-html_to_deck "test.html"
+html_to_deck "http://bartaz.github.com/impress.js# "
