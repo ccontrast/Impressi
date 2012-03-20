@@ -1,5 +1,5 @@
-var current_slide = null;
-var mode = 'prezi';
+var current_slide = null,
+ 		mode = 'prezi';
 
 document.addEventListener("keydown", function ( event ) {
 	if (mode == "edit"){
@@ -15,13 +15,30 @@ document.addEventListener("keyup", function ( event ) {
   
 
 $(function() {	
-	var input = $("#my_input");
+	var activeInput = false;
 	
-	$(".editable").click(function() {
-		input.val($(this).val());
+	$(".editable").click(function(e) {
+		e.stopImmediatePropagation();
+		var input = $("#my_input");
+				input.val($(this).val());
+		
 		if(!$(this).hasClass('active')) {
 			return false;
 		}
+		
+		mode = 'edit';
+		current_slide = $(this);
+		if(activeInput == false) {
+			input.fadeIn();
+			input.text($(this).val());
+			input.focus();
+			input.select();
+			activeInput = true;
+		} else {
+			input.hide();
+			activeInput = false;
+		}
+
 		
 		input.on({
 			keyup: function() {
@@ -35,27 +52,18 @@ $(function() {
 				}
 				mode = 'prezi';
 				$(this).hide();
-
+				activeInput = false;
 				return false;
 			}
 		});
-		
-		mode = 'edit';
-		current_slide = $(this);
-		input.fadeIn();
-		
-		input.text($(this).val());
-		input.focus();
-		input.select();
-		
+
 		return false;
 	});
 
-	
 	$("textarea").keyup(function(e) {
 		if (e.keyCode == 13 || e.keyCode == 27) {
 			$(this).blur();
-			$(this).hide();
+			$(this).hide('fast');
 		}
 	});
 });
