@@ -8,7 +8,7 @@
         $.each(this[0].attributes, function(index, attr) {
             attributes[attr.name] = attr.value;
         }); 
-
+				delete attributes['style']; 
         return attributes;
     }
 })(jQuery);
@@ -24,8 +24,8 @@ var pickle = function () {
 	var number_of_steps = $('#impress .step').length;
 	
 	for(var i = 0; i < number_of_steps; i++) {
-			
-		//console.log($('#impress .step')[i].getAttributes());
+			var test = $('#impress .step')[i]
+		console.log($(test).getAttributes());
 	    user_input.push($('#impress .step')[i].textContent);
 	}
 	
@@ -55,7 +55,7 @@ var sendViaAjax = function () {
 	});
 };
 
-setInterval(sendViaAjax, 60000);
+//setInterval(sendViaAjax, 60000);
 
 $('#impress-button').click(sendViaAjax);
 

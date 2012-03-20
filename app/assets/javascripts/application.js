@@ -13,5 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require bx_slide
-//= require sideSlideBar
+
 
