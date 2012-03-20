@@ -1,5 +1,6 @@
 Impressi::Application.routes.draw do
-
+  root :to => 'decks#new'
+  
   get "pages/home"
 
 

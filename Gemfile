@@ -8,7 +8,7 @@ gem 'rails', '3.2.1'
 gem 'sqlite3'
 
 gem 'devise'
-
+gem 'nokogiri'
 gem 'simple_form'
 
 

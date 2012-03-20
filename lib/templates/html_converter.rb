@@ -18,4 +18,4 @@ require 'open-uri'
   end
 # end
 
-html_to_deck "http://bartaz.github.com/impress.js# "
+puts html_to_deck "http://bartaz.github.com/impress.js# "

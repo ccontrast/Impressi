@@ -60,6 +60,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.17.2)
     multi_json (1.1.0)
+    nokogiri (1.5.2)
     orm_adapter (0.0.6)
     polyglot (0.3.3)
     rack (1.4.1)
@@ -132,6 +133,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   jquery-rails
+  nokogiri
   rails (= 3.2.1)
   rspec-rails (~> 2.6)
   sass-rails (~> 3.2.3)
