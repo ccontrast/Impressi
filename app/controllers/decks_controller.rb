@@ -36,7 +36,5 @@ class DecksController < ApplicationController
   end
 
   def show
-    @deck = Deck.first
-    # redirect_to 'decks/show/#/step-1'
   end
 end
