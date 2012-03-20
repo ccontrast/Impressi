@@ -28,7 +28,16 @@ class DecksController < ApplicationController
   end
 
   def update
-    
+    deck = Deck.find(params[:id])
+    new_content = params[:content]
+    deck.deck_data.each_with_index do |step, i|
+      step[:content] = new_content[i] + 'test'
+    end
+    if deck.save
+      render :nothing => true
+    else
+      redirect_to(edit_deck_path(deck.id))
+    end
   end
 
   def delete
@@ -36,5 +45,16 @@ class DecksController < ApplicationController
   end
 
   def show
+    @sample = Deck.find(1)
+    render :json => @sample 
+    #respond_to do |format|
+    #  format.html { 
+    #    @templates = Deck.find_all_by_template(true)
+    #    @template_names = @templates.map { |template| template.name }
+    #    @deck = Deck.new
+    #    render :new
+    #  }
+    #  format.json { :json => @sample }
+    #end
   end
 end
