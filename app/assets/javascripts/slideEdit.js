@@ -18,7 +18,7 @@ $(function() {
 	var activeInput = false,
 			textarea = document.createElement('textarea'),
 			inlineEditor = $(textarea);
-	
+	inlineEditor.attr('rows', '3');
 	inlineEditor.attr('id', 'inline-editor');
 	inlineEditor.attr('placeholder', 'put your awesome presentation awesomeness here!')
 	
