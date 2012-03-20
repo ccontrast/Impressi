@@ -3,14 +3,19 @@
 <head>
   <title>Impressi - HTML5 </title>
   <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= stylesheet_link_tag "impress", :media => "all" %>
+
   <%= javascript_include_tag "application" %>
+	<%= javascript_include_tag "bx_slide" %>
+	<%= javascript_include_tag "sideSlideBar" %>
+	<%= javascript_include_tag "autoregrow" %>
+	<%= javascript_include_tag "slideEdit" %>
+	
   <%= csrf_meta_tags %>
 </head>
 <body>
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
-
-hi
 
 	<% if signed_in? %>
 		<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
