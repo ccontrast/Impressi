@@ -13,11 +13,13 @@ class DecksController < ApplicationController
     @new_deck.name = params[:deck][:name]
     @new_deck.template = false
     
-    if @new_deck.save
-      flash[:notice] = 'Deck successfully created.'
-      redirect_to(edit_deck_path(@new_deck.id))
-    else
-      redirect_to(new_deck_path)
+    respond_to do |format|
+      if @new_deck.save
+        flash[:notice] = 'Deck successfully created.'
+        format.html { redirect_to(edit_deck_path(@new_deck.id)) }
+      else
+        format.html { redirect_to(new_deck_path) }
+      end
     end
   end
   
@@ -26,16 +28,7 @@ class DecksController < ApplicationController
   end
 
   def update
-    deck = Deck.find(params[:id])
-    new_content = params[:content]
-    deck.deck_data.each_with_index do |step, i|
-      step[:content] = new_content[i]
-    end
-    if deck.save
-      render :nothing => true
-    else
-      render :text => 'Failed Ajax call.'
-    end
+    
   end
 
   def delete
@@ -43,16 +36,5 @@ class DecksController < ApplicationController
   end
 
   def show
-    @sample = Deck.find(1)
-    render :json => @sample 
-    #respond_to do |format|
-    #  format.html { 
-    #    @templates = Deck.find_all_by_template(true)
-    #    @template_names = @templates.map { |template| template.name }
-    #    @deck = Deck.new
-    #    render :new
-    #  }
-    #  format.json { :json => @sample }
-    #end
   end
 end

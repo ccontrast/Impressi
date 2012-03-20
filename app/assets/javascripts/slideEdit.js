@@ -15,60 +15,60 @@ document.addEventListener("keyup", function ( event ) {
   
 
 $(function() {	
-	var activeInput = false;
+	var activeInput = false,
+			textarea = document.createElement('textarea'),
+			inlineEditor = $(textarea);
 	
-	$.click(function(e) {
+	inlineEditor.attr('id', 'inline-editor');
+	inlineEditor.attr('placeholder', 'put your awesome presentation awesomeness here!')
+	
+	$(".editable").click(function(e) {
+		current_slide = $(this);
 		e.stopImmediatePropagation();
-		
-		console.log("my id:" + $(this).attr('id'))
-		var input = $("#my_input");
-				input.val($(this).val());
-		
+	
+
 		if(!$(this).hasClass('active')) {
 			return false;
 		}
 		
-		
-		
 		mode = 'edit';
 		current_slide = $(this);
+
 		if(activeInput == false) {
-			input.fadeIn();
-			input.text($(this).val());
-			input.focus();
-			input.select();
 			activeInput = true;
+			mode = 'edit';
+			$(this).html(inlineEditor);
+			inlineEditor.focus();
+		
 		} else {
-			input.blur();
-			input.hide();
-			activeInput = false;
+		 		activeInput = false;
+				mode = 'prezi';
+				inlineEditor.blur();
+				e.stopImmediatePropagation();
 		}
 
-		
-		input.on({
-			keyup: function() {
-				current_slide.text($(this).val());
-				activeInput = false;
-			},
-			
-			blur: function() {
-				if( $(this).val() === "" || $(this).val().length === 1) {
-					$(this).val("Edit the text here.");
-					$('div.active > .editable').val("Edit the text here.");
+		inlineEditor.on({	
+			keyup: function(e) {
+				if (e.keyCode == 27) {
+					$(this).blur();
+					activeInput = false;
 				}
+			},
+					
+			blur: function() {
+				if($(this).val() === "" || $(this).val().length === 1) {
+					inlineEditor.attr('placeholder', 'put your awesome presentation awesomeness here!')
+					e.stopPropagation();
+				} else {
+						current_slide.text($(this).val());
+						console.log(mode);
+				}
+				
+				$(this).val("");
 				mode = 'prezi';
-				$(this).hide();
-		
 			}
 		});
-
 		return false;
 	});
-
-	$("textarea").keyup(function(e) {
-		if (e.keyCode == 13 || e.keyCode == 27) {
-			$(this).blur();
-			$(this).hide('fast');
-		}
-	});
+	
 });

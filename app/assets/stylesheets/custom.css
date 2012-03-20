@@ -9,7 +9,7 @@
 		z-index:101;
 		padding-bottom:20px;
 		pointer-events: auto;
-		width:400px;
+		width:200px;
 	}
 	
 	#container-custom {
@@ -132,7 +132,7 @@
 		padding-left:5px;
 	}
 	
-	textarea#my_input {
+	#my_input {
 	/*	position: fixed;
 			bottom: 300px;
 			width: 600px;
@@ -143,4 +143,16 @@
 		font-size: 1.2em;
 		display: none;
 		z-index:100;
+	}
+	
+	#inline-editor {
+		width:600px;
+		height:200px;
+		font-family: 'PT Serif', georgia, serif;
+	  font-size: 32px;
+	  line-height: 1.0;
+		border:none;
+		outline:none;
+		resize:none;
+		background-image:rgba(255,255,255,0.0);
 	}
