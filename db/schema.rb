@@ -11,15 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120319213536) do
+ActiveRecord::Schema.define(:version => 20120320215344) do
 
   create_table "decks", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.string   "deck_data"
-    t.boolean  "template",   :default => false
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+    t.text     "deck_data",  :limit => 10000
+    t.boolean  "template",                    :default => false
   end
 
   create_table "users", :force => true do |t|

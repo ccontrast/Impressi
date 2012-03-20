@@ -43,16 +43,6 @@ class DecksController < ApplicationController
   end
 
   def show
-    @sample = Deck.find(1)
-    render :json => @sample 
-    #respond_to do |format|
-    #  format.html { 
-    #    @templates = Deck.find_all_by_template(true)
-    #    @template_names = @templates.map { |template| template.name }
-    #    @deck = Deck.new
-    #    render :new
-    #  }
-    #  format.json { :json => @sample }
-    #end
+    @deck = Deck.find_by_alphadecimal(params[:id])
   end
 end

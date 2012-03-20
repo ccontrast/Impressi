@@ -7,7 +7,15 @@ class Deck < ActiveRecord::Base
   
   validates :name, presence: true,
                    uniqueness: true
+                   
   
+  def url
+    "/pressi/#{id.alphadecimal}"
+  end
+  
+  def self.find_by_alphadecimal(pressi_id)
+    Deck.find(pressi_id.alphadecimal.to_i)
+  end
   
     # for each step, create div tag with attributes of step object
     # => close div attributes tag
