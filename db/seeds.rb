@@ -10,12 +10,20 @@ user = User.create(:email => "bobhope@gmail.com", :password => "gggggg", :passwo
 
 d1 = user.decks.new
 d1.name = "Template 1"
-d1.deck_data = [{:class => "step slide", :data_x => "1000", :content => "Slide 1"}, {:class => "step slide", :data_x => "2000", :content => "Slide 2"}, {:class => "step slide", :data_x => "3000", :content => "Slide 3"}, {:class => "step slide", :data_x => "4000", :content => "Slide 4"}, {:class => "step slide", :data_x => "5000", :content => "Slide 5"}]
+d1.deck_data = [{:class => "step slide", :data_x => "1000", :content => "Slide 1"},
+                {:class => "step slide", :data_x => "2000", :content => "Slide 2"},
+                {:class => "step slide", :data_x => "3000", :content => "Slide 3"},
+                {:class => "step slide", :data_x => "4000", :content => "Slide 4"},
+                {:class => "step slide", :data_x => "5000", :content => "Slide 5"}]
 d1.template = true
 d1.save
 
 d2 = user.decks.new
 d2.name = "Template 2"
-d2.deck_data = [{:class => "step slide", :data_y => "1000", :content => "Slide 1"}, {:class => "step slide", :data_y => "2000", :content => "Slide 2"}, {:class => "step slide", :data_y => "3000", :content => "Slide 3"}, {:class => "step slide", :data_y => "4000", :content => "Slide 4"}, {:class => "step slide", :data_y => "5000", :content => "Slide 5"}]
+d2.deck_data = [{:class => "step slide", :data_y => "1000", :content => "Slide 1"},
+                {:class => "step slide", :data_y => "2000", :content => "Slide 2"},
+                {:class => "step slide", :data_y => "3000", :content => "Slide 3"},
+                {:class => "step slide", :data_y => "4000", :content => "Slide 4"}, 
+                {:class => "step slide", :data_y => "5000", :content => "Slide 5"}]
 d2.template = true
 d2.save
