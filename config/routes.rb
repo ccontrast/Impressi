@@ -9,7 +9,8 @@ Impressi::Application.routes.draw do
   
   match "/users/:id" => 'users#show'
   
-  match "/pressi/:id" => 'decks#show'
+  match "/pressi/:id/" => 'decks#show'
+  match "/pressi/:id/:method" => "decks#edit"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
