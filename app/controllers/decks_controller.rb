@@ -14,7 +14,7 @@ class DecksController < ApplicationController
     @new_deck.template = false
     
     if @new_deck.save
-      flash[:notice] = 'Deck successfully created.'
+      flash[:notice] = "Deck successfully created. The URL for your deck is: #{@new_deck.url}"
       redirect_to(edit_deck_path(@new_deck.id))
     else
       redirect_to(new_deck_path)
@@ -22,7 +22,13 @@ class DecksController < ApplicationController
   end
   
   def edit
-    @deck = Deck.find(params[:id])
+    deck_id = if params[:edit]
+      Deck.alphadecimal_to_id(params[:id])
+    else
+      params[:id]
+    end
+    
+    @deck = Deck.find(deck_id)
   end
 
   def update
@@ -43,6 +49,7 @@ class DecksController < ApplicationController
   end
 
   def show
-    @deck = Deck.find_by_alphadecimal(params[:id])
+    deck_id = Deck.alphadecimal_to_id(params[:id])
+    @deck = Deck.find(deck_id)
   end
 end
