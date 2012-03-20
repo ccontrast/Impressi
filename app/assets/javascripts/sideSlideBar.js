@@ -54,9 +54,8 @@
 		var numSlidesInDeck =  $('div.step').length;
 	
 		for(var i = 0; i < numSlidesInDeck;i++ ) {
-			var step = $("div#step-"+(i+1)).get(0);
-		
-			var clonedStep = createStepClone(step)
+			var step         = $("div#step-"+(i+1)).get(0),
+					clonedStep   = createStepClone(step);
 
 			$('#slide-list').append(populateSlideViewer(i, clonedStep));
 		}

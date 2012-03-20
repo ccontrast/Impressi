@@ -16,56 +16,65 @@ document.addEventListener("keyup", function ( event ) {
 
 $(function() {	
 	var activeInput = false;
+			textarea = document.createElement('textarea'),
+			inlineEditor = $(textarea);
+	inlineEditor.attr('id', 'inline-editor');
+	inlineEditor.attr('placeholder', 'put your awesome presentation awesomeness here!')
 	
 	$(".editable").click(function(e) {
+		current_slide = $(this);
+		console.log(activeInput);
 		e.stopImmediatePropagation();
-
-		var input = $("#my_input");
-				input.val($(this).val());
+	
 		
 		if(!$(this).hasClass('active')) {
 			return false;
 		}
 		
-		mode = 'edit';
-		current_slide = $(this);
 		if(activeInput == false) {
-			input.fadeIn();
-			input.text($(this).val());
-			input.focus();
-			input.select();
 			activeInput = true;
+			console.log(activeInput + '  after flag check');
+			mode = 'edit';
+			$(this).html(inlineEditor);
+			inlineEditor.focus();
+		
 		} else {
-			input.blur();
-			input.hide();
-			activeInput = false;
+		 		activeInput = false;
+				mode = 'prezi';
+				inlineEditor.blur();
+				//inlineEditor.hide();
+				e.stopImmediatePropagation();
 		}
 
-		
-		input.on({
-			keyup: function() {
-				current_slide.text($(this).val());
-				activeInput = false;
-			},
-			
-			blur: function() {
-				if( $(this).val() === "" || $(this).val().length === 1) {
-					$(this).val("Edit the text here.");
-					$('div.active > .editable').val("Edit the text here.");
-				}
-				mode = 'prezi';
-				$(this).hide();
-		
-			}
-		});
-
+			inlineEditor.on({	
+				keyup: function(e) {
+					if (e.keyCode == 27) {
+						$(this).blur();
+						activeInput = false;
+						//$(this).hide('fast');
+					}
+				},
+						
+					blur: function() {
+					
+						console.log($(this).val());
+						if($(this).val() === "" || $(this).val().length === 1) {
+							//$(this).val("Edit the text here.");
+							inlineEditor.attr('placeholder', 'put your awesome presentation awesomeness here!')
+							e.stopPropagation();
+							
+						} else {
+							current_slide.text($(this).val());
+							console.log(mode);
+						}
+							$(this).val("");
+							mode = 'prezi';
+					}
+					
+				});
+	
 		return false;
 	});
 
-	$("textarea").keyup(function(e) {
-		if (e.keyCode == 13 || e.keyCode == 27) {
-			$(this).blur();
-			$(this).hide('fast');
-		}
-	});
+	// $("inline-editor")
 });
