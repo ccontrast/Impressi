@@ -19,6 +19,7 @@ $(function() {
 	
 	$(".editable").click(function(e) {
 		e.stopImmediatePropagation();
+
 		var input = $("#my_input");
 				input.val($(this).val());
 		
@@ -35,6 +36,7 @@ $(function() {
 			input.select();
 			activeInput = true;
 		} else {
+			input.blur();
 			input.hide();
 			activeInput = false;
 		}
@@ -43,6 +45,7 @@ $(function() {
 		input.on({
 			keyup: function() {
 				current_slide.text($(this).val());
+				activeInput = false;
 			},
 			
 			blur: function() {
@@ -52,8 +55,7 @@ $(function() {
 				}
 				mode = 'prezi';
 				$(this).hide();
-				activeInput = false;
-				return false;
+		
 			}
 		});
 
