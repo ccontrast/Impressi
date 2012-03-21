@@ -8,16 +8,28 @@ class DecksController < ApplicationController
   end
 
   def create
-    @template = Deck.find_by_name(params[:deck][:template])
-    @new_deck = @template.dup
-    @new_deck.name = params[:deck][:name]
-    @new_deck.template = false
-    
-    if @new_deck.save
-      flash[:notice] = 'Deck successfully created.'
-      redirect_to(edit_deck_path(@new_deck.id))
+    if params[:deck][:html_template]
+      @template = Deck.new(params[:deck])
+      @template.template = true
+      if @template.save
+        flash[:notice] = 'Template successfully uploaded.'
+        redirect_to(new_deck_path)
+      else
+        flash[:alert] = 'Template NOT uploaded'
+        redirect_to(new_template_path)
+      end
     else
-      redirect_to(new_deck_path)
+      @template = Deck.find_by_name(params[:deck][:template])
+      @new_deck = @template.dup
+      @new_deck.name = params[:deck][:name]
+      @new_deck.template = false
+    
+      if @new_deck.save
+        flash[:notice] = 'Deck successfully created.'
+        redirect_to(edit_deck_path(@new_deck.id))
+      else
+        redirect_to(new_deck_path)
+      end
     end
   end
   

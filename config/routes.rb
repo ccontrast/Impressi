@@ -6,6 +6,7 @@ Impressi::Application.routes.draw do
 
   devise_for :users
   resources :decks
+  resources :templates
   
   match "/users/:id" => 'users#show'
   

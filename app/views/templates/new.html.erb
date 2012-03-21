@@ -1,0 +1,11 @@
+<h1>New Template</h1>
+
+<div style='pointer-events:auto;'>
+	<%= form_for @template do |f| %>
+	  <%= f.label "Name for this template" %>
+	  <%= f.text_field :name %>
+	  <%= f.label "HTML for this template" %>
+	  <%= f.text_area :html_template, :size => "20x30" %>
+	  <%= f.submit %>
+	<% end %>
+</div>

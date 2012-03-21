@@ -1,14 +1,26 @@
+require "#{Rails.root}/lib/templates/html_converter.rb"
+
 class Deck < ActiveRecord::Base
   belongs_to :user
   serialize :deck_data
   before_save :content?
   
-  attr_accessible :name, :template
+  attr_accessible :name, :template, :html_template
   
   validates :name, presence: true,
                    uniqueness: true
   
+  include HTMLConverter
   
+  def html_template
+    # return empty string so that html form is blank
+    ''
+  end
+  
+  def html_template=(html)
+    # function defined to replace the handling of the :html_template entry in the form when params[:deck] is called
+    self.deck_data = html_to_deck(html)
+  end
     # for each step, create div tag with attributes of step object
     # => close div attributes tag
     # => fill text with content data for that step
