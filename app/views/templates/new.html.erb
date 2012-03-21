@@ -1,7 +1,7 @@
 <h1>New Template</h1>
 
 <div style='pointer-events:auto;'>
-	<%= form_for @template do |f| %>
+	<%= form_for @template, :url => create_template_path do |f| %>
 	  <%= f.label "Name for this template" %>
 	  <%= f.text_field :name %>
 	  <%= f.label "HTML for this template" %>

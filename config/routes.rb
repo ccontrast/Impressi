@@ -3,13 +3,14 @@ Impressi::Application.routes.draw do
   root :to => 'decks#new'
 
   devise_for :users
-  resources :decks
-  resources :templates
   match "/users/:id" => 'users#show'
   
   resources :decks
   match "/pressi/:id/" => 'decks#show'
   match "/pressi/:id/:edit" => "decks#edit"
+  
+  resources :templates
+  match "/templates" => "templates#create", :as => :create_template, :via => :post
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
