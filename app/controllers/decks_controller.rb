@@ -33,7 +33,6 @@ class DecksController < ApplicationController
       if @new_deck.save
         flash[:notice] = "Deck successfully created. The URL for your deck is: #{@new_deck.url}"
         redirect_to(edit_deck_path(@new_deck.id))
-        redirect_to(edit_deck_path(@new_deck.id))
       else
         redirect_to(new_deck_path)
       end
