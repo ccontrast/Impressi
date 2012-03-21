@@ -38,23 +38,27 @@ class DecksController < ApplicationController
   end
 
   def update
-    puts params['content']['0']['id'].inspect
-    # deck = Deck.find(params[:id])
-    #     new_content = params[:content]
-    #     deck.deck_data.each_with_index do |step, i|
-    #       step['content'] = new_content[i]
-    #     end
-    #
-    # deck.user_id = current_user.id if user_signed_in?
-    #     
-    #     respond_to do |format|
-    #       if deck.save
-    #         flash.now[:success] = "Presentation saved"
-    #         format.js 
-    #       else
-    #         render :text => 'Failed Ajax call.'
-    #       end
-    #     end
+    deck = Deck.find(params[:id])
+    db_steps = deck.deck_data
+    attributes = db_steps[0].keys
+    client_steps = params['content']
+    
+    db_steps.each_with_index do |step, i|
+      attributes.each do |attribute|
+        step[attribute] = client_steps[i.to_s][attribute]
+      end
+    end
+    
+    deck.user_id = current_user.id if user_signed_in?
+        
+    respond_to do |format|
+      if deck.save
+        flash.now[:success] = "Presentation saved"
+        format.js 
+      else
+        render :text => 'Failed Ajax call.'
+      end
+    end
   end
 
   def delete

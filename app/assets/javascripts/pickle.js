@@ -26,7 +26,7 @@ var grabDeckData = function () {
 	
 	for(var i = 0; i < number_of_steps; i++) {
 		var step_tag = $('#impress .step')[i];
-	    user_input.push($(step_tag).getAttributes();
+	    user_input.push($(step_tag).getAttributes());
 	}
 	
 	return user_input;
