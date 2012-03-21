@@ -26,7 +26,7 @@ var grabDeckData = function () {
 	
 	for(var i = 0; i < number_of_steps; i++) {
 		var step_tag = $('#impress .step')[i];
-	    user_input.push($(step_tag).getAttributes());
+	    user_input.push($(step_tag).getAttributes();
 	}
 	
 	return user_input;
@@ -41,18 +41,18 @@ var sendViaAjax = function () {
 		 type: "PUT",
 		 data:  {
 	         content: contents
-	     },
+	   },
 		 url:  "http://localhost:3000/decks/" + deck_id,
 		 success: function() {
-			console.log(contents);
+				console.log(contents);
 		 },
 		 failure: function() {
-			 console.log("Fail."); 
+			 	console.log("Fail."); 
 		 }
 	});
 };
 
-setInterval(sendViaAjax, 80000);
+setInterval(sendViaAjax, 10000);
 
 $('#impress-button').click(sendViaAjax);
 

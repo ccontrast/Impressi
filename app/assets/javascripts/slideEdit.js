@@ -24,7 +24,7 @@ $(function() {
 	
 	$(".editable").click(function(e) {
 
-		if(!$(this).hasClass('active')) {
+		if(!$(this).hasClass('active') || $(this).attr('id', 'overview')) {
 			return false;
 		}
 		
@@ -68,7 +68,6 @@ $(function() {
 					e.stopImmediatePropagation();
 					$(this).val("");
 				}
-				//alert(current_slide.text());
 				mode = 'prezi';
 			}
 		});

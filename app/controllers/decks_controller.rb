@@ -4,38 +4,26 @@ class DecksController < ApplicationController
   #before_filter :authenticate_user!, :only => [:edit, :update]
   
   def new
-    random_number = rand(99999999999)
-    user = User.create!(:email => "user#{random_number}@gmail.com", :password => "foobar", :password_confirmation => "foobar")
-    sign_in(user)
-    # session[:guest_user] = user.id
+    # random_number = rand(99999999999)
+    #  user = User.create!(:email => "user#{random_number}@gmail.com", :password => "foobar", :password_confirmation => "foobar")
+    #  sign_in(user)
+    #  # session[:guest_user] = user.id
     @templates = Deck.find_all_by_template(true)
     @template_names = @templates.map { |template| template.name }
-    @deck = user.decks.build
+    @deck = Deck.new
   end
 
   def create
-    if params[:deck][:html_template]
-      @template = Deck.new(params[:deck])
-      @template.template = true
-      if @template.save
-        flash[:notice] = 'Template successfully uploaded.'
-        redirect_to(new_deck_path)
-      else
-        flash[:alert] = 'Template NOT uploaded'
-        redirect_to(new_template_path)
-      end
+    @template = Deck.find_by_name(params[:deck][:template])
+    @new_deck = @template.dup
+    @new_deck.name = params[:deck][:name]
+    @new_deck.template = false
+    if @new_deck.save
+      flash[:notice] = "Deck successfully created. The URL for your deck is: #{@new_deck.url}"
+      redirect_to(edit_deck_path(@new_deck.id))
     else
-      @template = Deck.find_by_name(params[:deck][:template])
-      @new_deck = @template.dup
-      @new_deck.name = params[:deck][:name]
-      @new_deck.template = false
-    
-      if @new_deck.save
-        flash[:notice] = "Deck successfully created. The URL for your deck is: #{@new_deck.url}"
-        redirect_to(edit_deck_path(@new_deck.id))
-      else
-        redirect_to(new_deck_path)
-      end
+      flash[:error] = 'Looks like that presentation already exists!'
+      redirect_to(new_deck_path)
     end
   end
   
@@ -56,6 +44,8 @@ class DecksController < ApplicationController
     #     deck.deck_data.each_with_index do |step, i|
     #       step['content'] = new_content[i]
     #     end
+    #
+    # deck.user_id = current_user.id if user_signed_in?
     #     
     #     respond_to do |format|
     #       if deck.save
