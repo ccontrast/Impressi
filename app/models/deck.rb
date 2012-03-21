@@ -9,6 +9,10 @@ class Deck < ActiveRecord::Base
   
   validates :name, presence: true,
                    uniqueness: true
+                   
+  def url
+    "/pressi/#{id.alphadecimal}"
+  end
   
   include HTMLConverter
   
@@ -66,6 +70,9 @@ class Deck < ActiveRecord::Base
   #   output
   #   
   # end
+  def self.alphadecimal_to_id(pressi_ad)
+    pressi_ad.alphadecimal
+  end
   
   def content?
     return false unless deck_data.kind_of?(Array)
@@ -75,8 +82,3 @@ class Deck < ActiveRecord::Base
     message
   end
 end
-# 
-# class Step
-#   attr_accessor :content, :border, :position_x, :position_y, :position_z,
-#                 :rotate_x, :rotate_y, :rotate_z, :scale
-# end

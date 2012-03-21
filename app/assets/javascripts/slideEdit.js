@@ -18,28 +18,27 @@ $(function() {
 	var activeInput = false,
 			textarea = document.createElement('textarea'),
 			inlineEditor = $(textarea);
-	
+	inlineEditor.attr('rows', '3');
 	inlineEditor.attr('id', 'inline-editor');
 	inlineEditor.attr('placeholder', 'put your awesome presentation awesomeness here!')
 	
 	$(".editable").click(function(e) {
-		current_slide = $(this);
-		e.stopImmediatePropagation();
-	
 
 		if(!$(this).hasClass('active')) {
 			return false;
 		}
 		
-		mode = 'edit';
 		current_slide = $(this);
+		currentText = current_slide.text().length == 0 ? "write stuff" : current_slide.text();
+		inlineEditor.val(currentText);
+		e.stopImmediatePropagation();
 
 		if(activeInput == false) {
 			activeInput = true;
 			mode = 'edit';
+			console.log(mode);
 			$(this).html(inlineEditor);
 			inlineEditor.focus();
-		
 		} else {
 		 		activeInput = false;
 				mode = 'prezi';
@@ -54,17 +53,22 @@ $(function() {
 					activeInput = false;
 				}
 			},
+			
+			click: function(e) {
+				e.stopPropagation();
+			},
 					
-			blur: function() {
+			blur: function(e) {
+				currentInput = $(this).val();
 				if($(this).val() === "" || $(this).val().length === 1) {
-					inlineEditor.attr('placeholder', 'put your awesome presentation awesomeness here!')
+					current_slide.text($(this).attr('placeholder'));
 					e.stopPropagation();
 				} else {
-						current_slide.text($(this).val());
-						console.log(mode);
+					current_slide.text(currentInput);
+					e.stopImmediatePropagation();
+					$(this).val("");
 				}
-				
-				$(this).val("");
+				//alert(current_slide.text());
 				mode = 'prezi';
 			}
 		});

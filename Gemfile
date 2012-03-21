@@ -10,6 +10,7 @@ gem 'sqlite3'
 gem 'devise'
 gem 'nokogiri'
 gem 'simple_form'
+gem 'alphadecimal'
 
 
 # Gems used only for assets and not required

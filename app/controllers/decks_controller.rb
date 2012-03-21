@@ -1,10 +1,16 @@
 class DecksController < ApplicationController
-  #before_filter :authenticate_user!
+  layout "deck", :except => :new
+  
+  before_filter :authenticate_user!, :only => [:edit, :update]
   
   def new
+    random_number = rand(99999999999)
+    user = User.create!(:email => "user#{random_number}@gmail.com", :password => "foobar", :password_confirmation => "foobar")
+    sign_in(user)
+    # session[:guest_user] = user.id
     @templates = Deck.find_all_by_template(true)
     @template_names = @templates.map { |template| template.name }
-    @deck = Deck.new
+    @deck = user.decks.build
   end
 
   def create
@@ -25,7 +31,8 @@ class DecksController < ApplicationController
       @new_deck.template = false
     
       if @new_deck.save
-        flash[:notice] = 'Deck successfully created.'
+        flash[:notice] = "Deck successfully created. The URL for your deck is: #{@new_deck.url}"
+        redirect_to(edit_deck_path(@new_deck.id))
         redirect_to(edit_deck_path(@new_deck.id))
       else
         redirect_to(new_deck_path)
@@ -34,14 +41,20 @@ class DecksController < ApplicationController
   end
   
   def edit
-    @deck = Deck.find(params[:id])
+    deck_id = if params[:edit]
+      Deck.alphadecimal_to_id(params[:id])
+    else
+      params[:id]
+    end
+    
+    @deck = Deck.find(deck_id)
   end
 
   def update
     deck = Deck.find(params[:id])
     new_content = params[:content]
     deck.deck_data.each_with_index do |step, i|
-      step[:content] = new_content[i]
+      step['content'] = new_content[i]
     end
     if deck.save
       render :nothing => true
@@ -55,16 +68,7 @@ class DecksController < ApplicationController
   end
 
   def show
-    @sample = Deck.find(1)
-    render :json => @sample 
-    #respond_to do |format|
-    #  format.html { 
-    #    @templates = Deck.find_all_by_template(true)
-    #    @template_names = @templates.map { |template| template.name }
-    #    @deck = Deck.new
-    #    render :new
-    #  }
-    #  format.json { :json => @sample }
-    #end
+    deck_id = Deck.alphadecimal_to_id(params[:id])
+    @deck = Deck.find(deck_id)
   end
 end

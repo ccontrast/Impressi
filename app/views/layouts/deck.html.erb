@@ -2,20 +2,22 @@
 <html>
 <head>
   <title>Impressi - HTML5 </title>
+	<%= javascript_include_tag "application"  %>
   <%= stylesheet_link_tag "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag "impress", :media => "all" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
 
-hi
-
 	<% if signed_in? %>
 		<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 	<% end %>
 
 	<%= yield %>
+	
+
+	<%= javascript_include_tag "impress" %>
 </body>
 </html>

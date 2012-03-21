@@ -2,9 +2,7 @@
 	<% step.each do |attribute, value| %>
 		<% if !["class","content"].include?(attribute) %>
 			<%= "#{attribute}='#{value}' " %>
-		<% end %>
-	<% end %>>
-	<p><%= step["content"] %></p>
+			<% end %><% end %>><p><%= step["content"] %></p>
 </div>
 
 

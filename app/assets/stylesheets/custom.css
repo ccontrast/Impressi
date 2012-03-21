@@ -133,11 +133,6 @@
 	}
 	
 	#my_input {
-	/*	position: fixed;
-			bottom: 300px;
-			width: 600px;
-			left: 50%;
-			margin-left: -250px;*/
 		resize: none;
 		line-height: 1.2em;
 		font-size: 1.2em;
@@ -147,12 +142,14 @@
 	
 	#inline-editor {
 		width:600px;
-		height:200px;
+		-webkit-border-radius:8px 4px;
 		font-family: 'PT Serif', georgia, serif;
 	  font-size: 32px;
 	  line-height: 1.0;
 		border:none;
-		outline:none;
 		resize:none;
-		background-image:rgba(255,255,255,0.0);
+		outline:none;
+		background-image:rgba(100,100,255,0.4);
+		opacity:0.5;
+		z-index:10000;
 	}
