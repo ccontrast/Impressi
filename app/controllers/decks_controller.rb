@@ -3,10 +3,14 @@ class DecksController < ApplicationController
   
   before_filter :authenticate_user!, :only => [:edit, :update]
   
-  def new    
+  def new
+    random_number = rand(99999999999)
+    user = User.create!(:email => "user#{random_number}@gmail.com", :password => "foobar", :password_confirmation => "foobar")
+    sign_in(user)
+    # session[:guest_user] = user.id
     @templates = Deck.find_all_by_template(true)
     @template_names = @templates.map { |template| template.name }
-    @deck = Deck.new
+    @deck = user.decks.build
   end
 
   def create
