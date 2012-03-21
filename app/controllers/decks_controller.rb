@@ -4,13 +4,13 @@ class DecksController < ApplicationController
   #before_filter :authenticate_user!, :only => [:edit, :update]
   
   def new
-    random_number = rand(99999999999)
-    user = User.create!(:email => "user#{random_number}@gmail.com", :password => "foobar", :password_confirmation => "foobar")
-    sign_in(user)
-    # session[:guest_user] = user.id
+    # random_number = rand(99999999999)
+    #  user = User.create!(:email => "user#{random_number}@gmail.com", :password => "foobar", :password_confirmation => "foobar")
+    #  sign_in(user)
+    #  # session[:guest_user] = user.id
     @templates = Deck.find_all_by_template(true)
     @template_names = @templates.map { |template| template.name }
-    @deck = user.decks.build
+    @deck = Deck.new
   end
 
   def create
@@ -33,8 +33,8 @@ class DecksController < ApplicationController
       if @new_deck.save
         flash[:notice] = "Deck successfully created. The URL for your deck is: #{@new_deck.url}"
         redirect_to(edit_deck_path(@new_deck.id))
-        redirect_to(edit_deck_path(@new_deck.id))
       else
+        flash[:error] = 'Looks like that presentation already exists!'
         redirect_to(new_deck_path)
       end
     end
@@ -57,12 +57,16 @@ class DecksController < ApplicationController
       step['content'] = new_content[i]
     end
     
+    deck.user_id = current_user.id if user_signed_in?
+    
     respond_to do |format|
       if deck.save
         flash.now[:success] = "Presentation saved"
         format.js 
       else
-        render :text => 'Failed Ajax call.'
+        flash.now[:success] = "Presentation saved"
+        format.js
+
       end
     end
   end
