@@ -1,7 +1,7 @@
 class DecksController < ApplicationController
   layout "deck", :except => :new
   
-  before_filter :authenticate_user!, :only => [:edit, :update]
+  #before_filter :authenticate_user!, :only => [:edit, :update]
   
   def new
     random_number = rand(99999999999)
@@ -56,10 +56,14 @@ class DecksController < ApplicationController
     deck.deck_data.each_with_index do |step, i|
       step['content'] = new_content[i]
     end
-    if deck.save
-      render :nothing => true
-    else
-      render :text => 'Failed Ajax call.'
+    
+    respond_to do |format|
+      if deck.save
+        flash.now[:success] = "Presentation saved"
+        format.js 
+      else
+        render :text => 'Failed Ajax call.'
+      end
     end
   end
 

@@ -4,10 +4,10 @@
 	}
 	
 	#slide-interface {
-		margin-top:30px;
-		margin-left:25px;
+		margin-top:15px;
+		margin-left:20px;
 		z-index:101;
-		padding-bottom:20px;
+		padding-bottom:10px;
 		pointer-events: auto;
 		width:200px;
 	}
@@ -37,6 +37,11 @@
 		margin:0 0 0 25px;
 		width:250px;
 		padding:0px !important;
+		pointer-events:all;
+	}
+	
+	#slide-list a{
+		cursor: pointer;
 	}
 	
 	.slide-thumbs {
@@ -152,4 +157,7 @@
 		background-image:rgba(100,100,255,0.4);
 		opacity:0.5;
 		z-index:10000;
+	}
+	.flash {
+		float:right;
 	}

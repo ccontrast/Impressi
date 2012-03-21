@@ -44,18 +44,15 @@ var sendViaAjax = function () {
 	     },
 		 url:  "http://localhost:3000/decks/" + deck_id,
 		 success: function() {
-		 //alert('save');
-		 console.log("Data saved.");
 			console.log(contents);
 		 },
 		 failure: function() {
-
 			 console.log("Fail."); 
 		 }
 	});
 };
 
-//setInterval(sendViaAjax, 60000);
+setInterval(sendViaAjax, 80000);
 
 $('#impress-button').click(sendViaAjax);
 

@@ -63,7 +63,7 @@
 		impressSlider = $('div ul#slide-list').bxSlider({
 			mode :            'vertical',
 			displaySlideQty : 4,
-			moveSlideQty :    1,
+			moveSlideQty :    4,
 			speed :           100,
 			infiniteLoop :    true,
 			controls :        false
