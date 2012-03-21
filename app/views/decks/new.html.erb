@@ -2,7 +2,7 @@
 
 <div style='pointer-events:auto;'>
 	<%= simple_form_for @deck do |f| %>
-	  <%= f.input :name %>
+	  <%= f.input :name, :required => false %>
 	  <%= f.input :template, :collection => @template_names %>
 		<% if user_signed_in? %>
 			<%= f.hidden_field :user_id, :value => current_user.id %>
