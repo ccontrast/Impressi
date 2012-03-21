@@ -36,6 +36,7 @@ $(function() {
 		if(activeInput == false) {
 			activeInput = true;
 			mode = 'edit';
+			console.log(mode);
 			$(this).html(inlineEditor);
 			inlineEditor.focus();
 		} else {
