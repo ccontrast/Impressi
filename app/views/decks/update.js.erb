@@ -1,6 +1,2 @@
-// var success = <%= flash[:success] %>;
-// $('body').append("<%= flash[:success] %>");
-// $('.flash').delay(100).fadeOut('slow');
-
 $(".flash").html("<%= escape_javascript(flash[:success]) %>");
 $(".flash").fadeIn(300).delay(3000).fadeOut(500);
