@@ -1,10 +1,9 @@
 Impressi::Application.routes.draw do
 
-  root :to => 'decks#new'
+  root :to => 'pages#home'
 
   devise_for :users
 
-  resources :decks
   resources :templates
   match "/users/:id" => 'users#show'
   

@@ -7,11 +7,9 @@ class ApplicationController < ActionController::Base
   
   def register_guest_user
     if current_user
-      if session[:guest_id]
-        session.delete :guest_id
-      end
+      session[:guest_id] = current_user.id
     else
-      session[:guest_id] ||= session[:guest_id] = rand(9999999)
+      session[:guest_id] ||= rand(9999999)
     end
   end
 end
