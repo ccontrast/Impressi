@@ -1,8 +1,6 @@
 <%= render :partial => "shared/side_bar" %>
 
 <div id='container-custom'>
-	<textarea id="my_input" rows='3' cols='60' class='six columns omega' style='pointer-events:all' placeholder='Enter your awesome slide related awesomeness here'></textarea>
-
 	<div id='impress' deck_id="<%= @deck.id %>" class='seven columns' style='z-index:-1'>
 		<% @deck.deck_data.each_with_index do |step, index| %>
 			<%= render :partial => 'step', :locals => {:step => step, :index => index} %>

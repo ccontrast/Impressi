@@ -1,15 +1,13 @@
+/*----------------------GENERIC STYLE------------------*/
 	a {
 		text-decoration:none;
 		color:black;
 	}
 	
-	#slide-interface {
-		margin-top:15px;
-		margin-left:20px;
-		z-index:101;
-		padding-bottom:10px;
-		pointer-events: auto;
-		width:200px;
+	
+/*----------------------SITE WIDE------------------*/	
+	#authentication {
+		pointer-events:auto;
 	}
 	
 	#container-custom {
@@ -19,6 +17,12 @@
 		position:relative;
 	}
 	
+	.flash {
+		float:right;
+	}
+	
+
+/*----------------------SIDE BAR SLIDE EDIT PAGE------------------*/
 	#left-nav-bar {
 		background-color: #20272a;
 	  background-image: -moz-linear-gradient(top, #364147, #0a0c0d);
@@ -26,13 +30,23 @@
 	  background-image: -o-linear-gradient(top, #364147, #0a0c0d);
 	  background-image: -webkit-linear-gradient(top, #364147, #0a0c0d);
 	  background-image: linear-gradient(top, #364147, #0a0c0d);
-		height:100%;	
+		height:3000px;	
 		width:250px;
 		border-right:6px solid #5FCE6D;
 		border-bottom-left-radius:6px;
 		-webkit-box-shadow:-3px 1px 8px 7px #777;
 		margin-right:50px;
 	}
+		
+	#slide-interface {
+		margin-top:15px;
+		margin-left:20px;
+		z-index:101;
+		padding-bottom:10px;
+		pointer-events: auto;
+		width:200px;
+	}
+	
 	#slide-list{
 		margin:0 0 0 25px;
 		width:250px;
@@ -44,13 +58,66 @@
 		cursor: pointer;
 	}
 	
-	.slide-thumbs {
+	#slideDeckButtons {
+		list-style:none;
+		display:inline;
+		margin-left:10px;
+	}
+	
+	#slideDeckButtons li {
+		float:left;
+		margin-left:25px;
+	}
+	
+	#impress-button {
+		margin-left:40px;
+		margin-top:10px;
+		margin-top:20px;
+		font-size:20px;
+	}
+	
+	#decorate-button {
+		padding-bottom:5px;
+		padding-left:5px;
+	}
 		
+	.button {
+		background: #778;
+		text-align: center;
+		color: white;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: .8em;
+		line-height: 1;
+		font-family: "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif;
+		position: relative;
+		cursor: pointer;
+		border: none;
+		outline: none;
+		margin: 0;
+		padding:10px;
+		border-radius:2px 2px;
 	}
 	
-	.step-view {
 	
+/*----------------------SLIDE EDITOR------------------*/		
+	#inline-editor {
+		width:600px;
+		-webkit-border-radius:4px 4px;
+		-webkit-box-shadow:inset 4px 2px 16px -3px #888;
+		font-family: 'PT Serif', georgia, serif;
+	  font-size: 32px;
+	  line-height: 1.0;
+		border:6px solid #888;
+		resize:none;
+		outline:none;
+		opacity:1;
+		background-color:#fff;
+		z-index:10000;
 	}
+
+
+/*----------------------IMPRESS OVERRIDES------------------*/	
 	.custom-wrapper {
 		width:200px;
 	}
@@ -84,81 +151,4 @@
 
 	.custom-step:not(.custom-active) {
 	 	opacity: 0.3;
-	}
-	
-	.button {
-		background: #778;
-		text-align: center;
-		color: white;
-		text-decoration: none;
-		font-weight: bold;
-		font-size: .8em;
-		line-height: 1;
-		font-family: "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif;
-		position: relative;
-		cursor: pointer;
-		border: none;
-		outline: none;
-		margin: 0;
-		padding:10px;
-		border-radius:2px 2px;
-	}
-	
-	#slideDeckButtons {
-		list-style:none;
-		display:inline;
-		margin-left:10px;
-	}
-	
-	#slideDeckButtons li {
-		float:left;
-		margin-left:25px;
-	}
-	
-	#impress-button {
-		margin-left:40px;
-		margin-top:10px;
-		margin-top:20px;
-		font-size:20px;
-	}
-	
-/*	.image-add {
-		background-image: url('image_white_16x16.png');
-		background-repeat:no-repeat;
-		padding-left:10px;
-		margin-top:10px;
-		padding-right:5px;
-		border:1px solid black;
-		padding-left:10px;
-	}
-	*/
-	#decorate-button {
-		padding-bottom:5px;
-		padding-left:5px;
-	}
-	
-	#my_input {
-		resize: none;
-		line-height: 1.2em;
-		font-size: 1.2em;
-		display: none;
-		z-index:100;
-	}
-	
-	#inline-editor {
-		width:600px;
-		-webkit-border-radius:8px 4px;
-		-webkit-box-shadow:inset 4px 4px 10px #aaa;
-		font-family: 'PT Serif', georgia, serif;
-	  font-size: 32px;
-	  line-height: 1.0;
-		border:none;
-		resize:none;
-		outline:none;
-		background-image:rgba(100,100,255,1);
-		opacity:0.5;
-		z-index:10000;
-	}
-	.flash {
-		float:right;
 	}

@@ -10,12 +10,7 @@
 <body>
 	<%= render :partial => 'shared/flash', :locals => {:flash => flash} %>
 
-	<% if signed_in? %>
-		<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-	<% else %>
-		<%= link_to "Sign up", new_user_registration_path %>
-		<%= link_to "Sign in", user_session_path %>
-	<% end %>
+	<%= render :partial => 'shared/authentication' %>
   <div class='container'>
 		<%= yield %>
 	</div>
