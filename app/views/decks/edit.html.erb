@@ -1,7 +1,7 @@
 <%= render :partial => "shared/side_bar" %>
 
 <div id='container-custom'>
-	<div id='impress' deck_id="<%= @deck.id %>" class='seven columns' style='z-index:-1'>
+	<div id='impress' deck_id="<%= @deck.id %>" url='<%= @deck.url %>' class='seven columns' style='z-index:-1'>
 		<% @deck.deck_data.each_with_index do |step, index| %>
 			<%= render :partial => 'step', :locals => {:step => step, :index => index} %>
 		<% end %>

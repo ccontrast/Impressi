@@ -57,5 +57,8 @@ var sendViaAjax = function () {
 
 setInterval(sendViaAjax, 1000000);
 
-$('#impress-button').click(sendViaAjax);
+$('#impress-button').click(function() {
+	sendViaAjax();
+	window.location.href = 'http://localhost:3000' + $('#impress').attr('url');
+});
 

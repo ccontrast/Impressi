@@ -1,4 +1,4 @@
-<div id="step-<%= (index + 1) %>" class="<%= step['class']%> editable" 
+<div id="step-<%= (index + 1) %>" class="<%= step['class']%>" 
 	<% step.each do |attribute, value| %>
 		<% if !['class','content'].include?(attribute) %>
 			<%= "#{attribute}='#{value}' " %>
