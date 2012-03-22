@@ -31,8 +31,7 @@ class DecksController < ApplicationController
       @new_deck.template = false
     
       if @new_deck.save
-        flash[:notice] = "Deck successfully created. The URL for your deck is: #{@new_deck.url}"
-        redirect_to(edit_deck_path(@new_deck.id))
+        flash[:notice] = "Presentation initialized. You can view it anytime at: #{@new_deck.url}!"
         redirect_to(edit_deck_path(@new_deck.id))
       else
         redirect_to(new_deck_path)
@@ -52,6 +51,7 @@ class DecksController < ApplicationController
 
   def update
     deck = Deck.find(params[:id])
+    p params
     new_content = params[:content]
     deck.deck_data.each_with_index do |step, i|
       step['content'] = new_content[i]

@@ -148,13 +148,14 @@
 	#inline-editor {
 		width:600px;
 		-webkit-border-radius:8px 4px;
+		-webkit-box-shadow:inset 4px 4px 10px #aaa;
 		font-family: 'PT Serif', georgia, serif;
 	  font-size: 32px;
 	  line-height: 1.0;
 		border:none;
 		resize:none;
 		outline:none;
-		background-image:rgba(100,100,255,0.4);
+		background-image:rgba(100,100,255,1);
 		opacity:0.5;
 		z-index:10000;
 	}

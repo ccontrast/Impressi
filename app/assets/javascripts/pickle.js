@@ -20,16 +20,25 @@ var pickle = function () {
 	// each div under <div id ="impress">
 	//   put the content into an array
 
-	var user_input = [];
-	var number_of_steps = $('#impress .step').length;
+	var userInput = {};
+	var numberOfSteps = $('#impress .step').length;
 	
-	for(var i = 0; i < number_of_steps; i++) {
-			var test = $('#impress .step')[i]
-		console.log($(test).getAttributes());
-	    user_input.push($('#impress .step')[i].textContent);
+	for(var i = 0; i < numberOfSteps; i++) {
+			var currentStep = $('#impress .step')[i],
+					stepAttributes = $(currentStep).getAttributes();
+					
+					for(var attr in stepAttributes) {
+						
+						userInput.attr = stepAttributes[attr];
+						// console.log(attr + ":   " + stepAttributes[attr]);
+						// 					console.log("---------------");
+					}
+				// console.log($('#impress .step')[i].textContent);
+	    userInput.content = $('#impress .step')[i].textContent;
+	
 	}
-	
-	return user_input;
+	console.log(userInput);
+	return userInput;
 };
 
 var sendViaAjax = function () {
@@ -52,7 +61,7 @@ var sendViaAjax = function () {
 	});
 };
 
-setInterval(sendViaAjax, 80000);
+//setInterval(sendViaAjax, 16000);
 
 $('#impress-button').click(sendViaAjax);
 
