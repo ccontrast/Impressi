@@ -42,7 +42,7 @@ class DecksController < ApplicationController
 
     db_steps = deck.deck_data
     attributes = db_steps[0].keys
-    client_steps = params['content'].gsub(/\s+/, "")
+    client_steps = params['content']
     
     db_steps.each_with_index do |step, i|
       attributes.each do |attribute|

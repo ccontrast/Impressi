@@ -21,7 +21,7 @@ var grabDeckData = function () {
 	// each div under <div id ="impress">
 	//   put the content into an array
 
-	var user_input = {};
+	var user_input = [];
 	var number_of_steps = $('#impress .step').length;
 	
 
