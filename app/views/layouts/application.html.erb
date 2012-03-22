@@ -3,21 +3,25 @@
 <head>
   <title>Impressi - HTML5 </title>
   <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= stylesheet_link_tag "bootstrap", :media => "all" %>
+  <%= stylesheet_link_tag "bootstrap-responsive", :media => "all" %>
+
+  <%= javascript_include_tag "bootstrap" %>
   <%= javascript_include_tag "application" %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
-	
-	<div class='flash'>
-		<% flash.each do |k,v| %>
-				<p class="<%= k %>"><%= v %></p>
-		<% end %>
-	</div>
+	<%= render :partial => 'shared/flash', :locals => {:flash => flash} %>
 
 	<% if signed_in? %>
 		<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+	<% else %>
+		<%= link_to "Sign up", new_user_registration_path %>
+		<%= link_to "Sign in", user_session_path %>
 	<% end %>
-
-	<%= yield %>
+  <div class='container'>
+		<%= yield %>
+	</div>
 </body>
 </html>
