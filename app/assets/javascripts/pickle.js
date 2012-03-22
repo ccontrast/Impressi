@@ -21,8 +21,8 @@ var grabDeckData = function () {
 	// each div under <div id ="impress">
 	//   put the content into an array
 
-	var userInput = {};
-	var numberOfSteps = $('#impress .step').length;
+	var user_input = {};
+	var number_of_steps = $('#impress .step').length;
 	
 
 	for(var i = 0; i < number_of_steps; i++) {
@@ -30,8 +30,8 @@ var grabDeckData = function () {
 	    user_input.push($(step_tag).getAttributes());
 	}
 	
-	console.log(userInput);
-	return userInput;
+	console.log(user_input);
+	return user_input;
 };
 
 var sendViaAjax = function () {
@@ -55,7 +55,7 @@ var sendViaAjax = function () {
 };
 
 
-setInterval(sendViaAjax, 10000);
+setInterval(sendViaAjax, 1000000);
 
 $('#impress-button').click(sendViaAjax);
 
