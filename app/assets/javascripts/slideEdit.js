@@ -24,7 +24,7 @@ $(function() {
 	
 	$(".editable").click(function(e) {
 
-		if(!$(this).hasClass('active') || $(this).attr('id', 'overview')) {
+		if(!$(this).hasClass('active')) {
 			return false;
 		}
 		
